@@ -4,6 +4,12 @@
 <div class="" style="background-image: url('{% static "bg3.jpg" %}'); background-size: cover; background-repeat: no-repeat;
 ">
 <div class="container p-5" >
+    
+        <div class="pt-4" >
+            <a class="btn btn-info" href="{% url 'update' %}">Edit your profile data</a>
+            <a class="btn btn-info" href="{% url "borrow_history" %}">Show borrowed books</a>
+            <a class=" btn  btn-info" href="{% url "report" %}">All Transactions</a>
+        </div>
     <h4 style="text-align: center; color: white;">All Transactions</h4>
     <table class="table text-white " >
         <thead>
