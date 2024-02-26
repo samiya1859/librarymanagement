@@ -7,6 +7,8 @@ from category.models import Category
 from django.views.generic import CreateView,UpdateView,DeleteView,DetailView,TemplateView
 from django.views import View
 from django.views.generic import FormView
+from django.views.decorators.csrf import csrf_protect
+from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -32,7 +34,7 @@ from django.contrib.auth.decorators import login_required
 #         context['form'] = ReviewForm(user=self.request.user)
 
 #         return context
-    
+@method_decorator(csrf_protect, name='dispatch')    
 class BookDetailView(DetailView):
     model = Book
     template_name = 'book_detail.html'
@@ -117,7 +119,7 @@ class AddReview(FormView):
 
 
 
-
+@method_decorator(csrf_protect, name='dispatch')
 class Comment_views(DetailView):
     model = Book
     pk_url_kwarg = 'id'

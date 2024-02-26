@@ -15,6 +15,8 @@ from django.template.loader import render_to_string
 from django.shortcuts import get_object_or_404
 from django.views.generic import CreateView,ListView
 from django.views import View
+from django.views.decorators.csrf import csrf_protect
+from django.utils.decorators import method_decorator
 from .constants import DEPOSIT,RETURN,BORROW
 from django.db.models import Sum
 from book.models import Borrow
@@ -42,6 +44,7 @@ class TransactionCreateMixin(LoginRequiredMixin, CreateView):
 
         return context
     
+@method_decorator(csrf_protect, name='dispatch')    
 class DepositMoneyView(TransactionCreateMixin):
     form_class = DepositForm
     title = 'Deposit Money'

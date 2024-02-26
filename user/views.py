@@ -12,6 +12,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.views import View
+from django.views.decorators.csrf import csrf_protect
+from django.utils.decorators import method_decorator
 # Create your views here.
 
 def send_mail(user,subject,template):
@@ -22,6 +24,7 @@ def send_mail(user,subject,template):
     send_mail.attach_alternative(message,"text/html")
     send_mail.send()
 
+@method_decorator(csrf_protect, name='dispatch')
 class UserSignupView(FormView):
     template_name = 'signup.html'
     form_class = UserRegistrationForm
@@ -31,7 +34,8 @@ class UserSignupView(FormView):
         user = form.save()
         login(self.request,user)
         return super().form_valid(form)
-    
+
+@method_decorator(csrf_protect, name='dispatch')    
 class UserLoginView(LoginView):
     template_name= 'login.html'
     def get_success_url(self):
@@ -54,8 +58,9 @@ class UserLogoutView(LogoutView):
     def get_success_url(self):
         if self.request.user.is_authenticated:
             logout(self.request)
-        return reverse_lazy('home')    
-
+        return reverse_lazy('home')   
+     
+@method_decorator(csrf_protect, name='dispatch')
 class UserAccountUpdate(LoginRequiredMixin,View):
     template_name = 'update.html'
 
@@ -70,7 +75,8 @@ class UserAccountUpdate(LoginRequiredMixin,View):
             messages.success(request,"Profile Updated Successfully!!")
             return redirect('profile')
         return render(request,self.template_name,{'form':form})
-
+    
+@method_decorator(csrf_protect, name='dispatch')
 class PasswordChange(View):
     template_name = 'Change_pass.html'
 
