@@ -150,3 +150,4 @@ EMAIL_HOST_PASSWORD = env("EMAIL_PASSWORD")
 CSRF_TRUSTED_ORIGINS = [
     'https://librarymanagementprojectdeploy.onrender.com', 'https://*.127.0.0.1'
     ]
+CSRF_COOKIE_SECURE = True
