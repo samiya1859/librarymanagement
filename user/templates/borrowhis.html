@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="" style="background-image: url('{% static "bg3.jpg" %}'); background-size: cover; background-repeat: no-repeat;
+">
+<div style="padding: 70px;">
+    <div class="pt-4" >
+        <a class="btn btn-info" href="{% url 'update' %}">Edit your profile data</a>
+        <a class="btn btn-info" href="{% url "borrow_history" %}">Show borrowed books</a>
+    </div>
+    
+    <div class="d-flex flex-wrap" style="gap: 20px;padding-top: 80px;">
+        <h6 style="color: chocolate;">Here is your borrowed history:</h6><br>
+        
+        {% for borrow in borrowed_books %}
+        <div class="card" style="width: 18rem; gap: 30px;">
+            <img src="{{ borrow.book.image.url }}" class="card-img-top" alt="Book image" style="width: 40%;">
+            <div class="card-body">
+                <h5 class="card-title">Book title: {{ borrow.book.title }}</h5>
+                <h5 class="">Author: {{ borrow.book.Author.name }}</h5>
+                <h5 class="">Borrowing Price: {{ borrow.book.borrowing_price }}</h5>
+                <h5>Description: {{ borrow.book.description | truncatewords:8 }}</h5>
+                <div>
+                    <a class="btn btn-primary" href="{% url "book_details" borrow.book.id %}">Write Review</a>
+                    {% if transaction.is_returned %}
+                    <a class="btn btn-warning" href="#">Returned</a>
+                    {% else %}
+                    <a class="btn btn-info" href="#">Return book</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div> 
+</div>
+    
+</div>
+{% include "footer.html" %}
+{% endblock content %}

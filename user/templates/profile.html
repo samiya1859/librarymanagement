@@ -1,0 +1,16 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% block content %}
+<div style="background-image: url('{% static "bg3.jpg" %}'); background-size: cover; background-repeat: no-repeat;
+height: 90vh;">
+    <div style="padding: 80px;" >
+    <a class="btn btn-info" href="{% url "update" %}">Edit your profile data</a>
+    <a class="btn btn-info" href="{% url "borrow_history" %}">show borrowed books</a>
+    <a class=" btn  btn-info" href="{% url "report" %}">All Transactions</a>
+   
+    </div>
+    
+</div>
+{% include "footer.html" %}
+{% endblock content %}
+

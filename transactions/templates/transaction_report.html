@@ -1,0 +1,44 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% block content %}
+<div class="" style="background-image: url('{% static "bg3.jpg" %}'); background-size: cover; background-repeat: no-repeat;
+">
+<div class="container p-5" >
+    <h4 style="text-align: center; color: white;">All Transactions</h4>
+    <table class="table text-white " >
+        <thead>
+            <tr>
+                <th>Transaction Type</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Book Title</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody style="background-color: chocolate;">
+            {% for transaction in object_list %}
+            <tr>
+                <td>{{ transaction.get_transaction_type_display }}</td>
+                <td>{{ transaction.timestamp }}</td>
+                <td>{{ transaction.amount }}</td>
+                <td>{{transaction.book.title}}</td>
+                <td>
+                    
+                    {% if transaction.transaction_type == 2 %}
+                        {% if transaction.is_returned %}
+                            <a class="btn btn-warning" href="#">Returned</a>
+                        {% else %}
+                            <a class="btn btn-info" href="{% url 'return' transaction.id %}">Return book</a>
+                        {% endif %}
+                       
+                    {% endif %}
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+{% include "footer.html" %}
+{% endblock content %}

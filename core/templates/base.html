@@ -1,0 +1,35 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% block content %}
+
+<div class=" ">
+  
+  <div class="" style="background-image: url('{% static "lib.jpg" %}'); background-size: cover; background-repeat: no-repeat;
+  height: 90vh;">
+   <div style="text-align: center;padding-top: 80px;">
+    <h2 style="color: wheat;">Welcome!!</h2>
+    <h4 style="color: cadetblue;">to the empire of knowledge.</h4>
+    <h6 style="color: cadetblue;">Our will is provide you the best books to encourage you to gain knowledge</h6>
+   
+      <form action="" style="text-align: center;">
+        <input style="padding: 5px; border-radius: 4px ;" type="search" placeholder="Search your book">
+        <button class="btn btn-success" type="submit">Search</button>
+      </form>
+    
+    
+   </div>
+  </div>
+  {% include "footer.html" %}
+  </div>
+  
+</div>
+    
+{% endblock content %}
+
+   
+
+
+{% comment %} <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search Books</button>
+            </form> {% endcomment %}

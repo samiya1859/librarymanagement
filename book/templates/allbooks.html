@@ -1,0 +1,41 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% block content %}
+<div class="">
+    
+    <div class="bg-black p-5">
+        <h6 style="color: white;">Show by category:</h6>  
+         {% for cat in categories %}
+          <a href="{% url "category_wise_book" cat.slug %}" class="text-white btn btn-info">{{cat.category}}</a>
+         {% endfor %}
+
+    
+    <div style="padding-top: 70px;align-items: center;justify-content: center;padding: 50px;">
+        <h4 style="color: antiquewhite;">{{data | length}} Books found </h4>
+        <div class="d-flex flex-wrap" style="gap: 20px;">
+          {% for book in data %}
+          <div class="card" style="width: 18rem;">
+            {% if book.image %}
+            <img src="{{book.image.url}}" class="card-img-top w-50" alt="Book Image">
+            {% else %}
+            <img src="{% static 'dighi.jpg' %}" class="card-img-top" alt="Placeholder Image">
+            {% endif %} 
+            <div class="card-body">
+              <h5 class="card-title">Book name : {{book.title}}</h5>
+              <h5 class="">Brand Name : {{book.category.category}}</h5>
+              <h5 class="">Price : {{book.borrowing_price}}</h5>
+              
+              <a href="{% url "book_details" book.id %}" class="btn btn-success">Show Details</a>
+              
+              
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% include "footer.html" %}
+</div>
+
+{% endblock content %}
+   

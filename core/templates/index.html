@@ -1,0 +1,25 @@
+{% extends "navbar.html" %}
+{% load static %}
+
+    
+{% block content %}
+<div class="">
+    
+    <div style="background-image: url('{% static "lib2.jpg" %}'); background-size: cover; background-repeat: no-repeat; height: 90vh;" >
+        <div style="text-align: center;padding-top: 80px;">
+            <div class="p-5">
+                <h2 style="color: white;">About Us</h2>
+                <h5 style="color: wheat;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui maxime, perspiciatis totam officia sapiente maiores facere illo nihil enim ipsa minus magni hic excepturi dolore quae eos accusamus est odio!</h5>
+
+                <a class="btn btn-info" href="{% url "allbooks" %}">Show All Books</a>
+                
+       </div>
+        </div>
+        
+    </div>
+    {% include "footer.html" %}
+</div>    
+{% endblock content %}
+    
+
+
