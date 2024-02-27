@@ -5,7 +5,8 @@ class TransactionForm(forms.ModelForm):
     class Meta:
         model = Transaction
         fields = [
-            'amount'
+            'amount',
+            
         ]
 
     def __init__(self,*args,**kwargs):

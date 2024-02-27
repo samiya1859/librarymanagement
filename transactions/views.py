@@ -81,7 +81,7 @@ class DepositMoneyView(TransactionCreateMixin):
         send_email.send()
         
         messages.success(self.request, f'{"{:,.2f}".format(float(amount))}$ was deposited successfully!')
-        return super().form_valid(form)
+        return redirect('home')
     
 # class BorrowBookView(LoginRequiredMixin, View):
 #     def get(self, request, id):
