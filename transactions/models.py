@@ -13,7 +13,7 @@ class Transaction(models.Model):
     transaction_type = models.IntegerField(choices=TRANSACTION_TYPE,null=True,blank=True)
     balance_after_transaction = models.DecimalField(decimal_places=2 , max_digits=12,default=0)
     timestamp = models.DateTimeField(auto_now_add=True)
-    is_returned = models.BooleanField(default=False,null=True)
+    is_returned = models.BooleanField(default=False,null=True,blank=True)
     
     class Meta:
         ordering = ['timestamp']
