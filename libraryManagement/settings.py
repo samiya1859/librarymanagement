@@ -31,7 +31,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://librarymanagementprojectdeploy.onrender.com', 'https://*.127.0.0.1'
+    ]
 # Application definition
 
 INSTALLED_APPS = [
@@ -147,7 +149,5 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = env("EMAIL")
 EMAIL_HOST_PASSWORD = env("EMAIL_PASSWORD")
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://librarymanagementprojectdeploy.onrender.com', 'https://*.127.0.0.1'
-    ]
-CSRF_COOKIE_SECURE = True
+
+
