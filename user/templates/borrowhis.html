@@ -24,10 +24,10 @@
                 <h5>Description: {{ borrow.book.description | truncatewords:8 }}</h5>
                 <div>
                     <a class="btn btn-primary" href="{% url "book_details" borrow.book.id %}">Write Review</a>
-                    {% if transaction.is_returned %}
-                    <a class="btn btn-warning" href="#">Returned</a>
+                    {% if borrow.book.is_borrowed %}
+                    <a class="btn btn-info" href="{% url "report"  %}">Return book</a>
                     {% else %}
-                    <a class="btn btn-info" href="#">Return book</a>
+                    <a class="btn btn-warning" href="#">Returned</a>
                     {% endif %}
                 </div>
             </div>
