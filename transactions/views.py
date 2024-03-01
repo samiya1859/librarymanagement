@@ -164,7 +164,7 @@ class BorrowBookView(LoginRequiredMixin, View):
         messages.success(request, f"You have successfully borrowed '{book.title}'.")
 
         # Redirect the user to a specific URL after a successful borrowing
-        return redirect('book_details', pk=id)
+        return redirect('allbooks')
 
 # class ReturnBookView(LoginRequiredMixin, View):
 #     def get(self, request, transaction_id):

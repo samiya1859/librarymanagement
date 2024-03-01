@@ -4,9 +4,9 @@
 {% block content %}
 <div style="background-color: grey;">
 <form style="width:50% ; margin : auto;padding-top: 40px;" method="post">
-    {% csrf_token %}
-    <h5 style="text-align: center;">Signup page</h5>
     
+    <h5 style="text-align: center;">Signup page</h5>
+    {% csrf_token %}
 {{form | crispy}}
 
 <button class="btn btn-warning mb-5">Sign up</button>

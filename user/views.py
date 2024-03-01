@@ -24,7 +24,7 @@ def send_mail(user,subject,template):
     send_mail.attach_alternative(message,"text/html")
     send_mail.send()
 
-@method_decorator(csrf_protect, name='dispatch')
+@method_decorator(csrf_protect, name='dispatch') 
 class UserSignupView(FormView):
     template_name = 'signup.html'
     form_class = UserRegistrationForm
@@ -32,8 +32,8 @@ class UserSignupView(FormView):
 
     def form_valid(self, form):
         user = form.save()
-        login(self.request,user)
-        return super().form_valid(form)
+        login(self.request, user)
+        return redirect('home')
 
 @method_decorator(csrf_protect, name='dispatch')    
 class UserLoginView(LoginView):
